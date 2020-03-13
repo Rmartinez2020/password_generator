@@ -19,6 +19,14 @@ function generatePassword() {
   //ask the user what kind of characters they want in the password and then logs the response and add them to an array
   var numChar = prompt("How many characters would you like to use?");
   //console.log(numChar);
+  //limit amount of characters
+  if(numChar > 100 ) {
+    alert("Please select less than 100 characters.");
+    var numChar = prompt("How many characters would you like to use?");
+  }
+  if(numChar <8 ) {
+
+  }
 
   var useLower = confirm("Would you like lowercase letters?");
   // console.log(useLower);
@@ -53,9 +61,12 @@ function generatePassword() {
  for (var index = 0; index < numChar; index++) {
   var getChar = possibleChar[Math.floor(Math.random() * possibleChar.length)];
   var addToPass = getChar[Math.floor(Math.random() * getChar.length)];
+  //updates password
   userPass += addToPass;
  }
-  
+  //empty possibleChar array
+  possibleChar = [];
+  console.log(possibleChar);
 
 
   return userPass
