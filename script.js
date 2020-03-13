@@ -7,19 +7,16 @@ var numbers = "0123456789";
 var lettersLower = "abcdefghijklmnopqrstuvwxyz";
 var lettersUpper = "ABCDEFGHIJKLMNOPQRSTUBWXYZ";
 var specialChar = ".-_!@#$%^&*+";
-
+//create empty array to pull characters from
+var possibleChar = [];
 
 function generatePassword() {
-  //create empty array to pull characters from
-  var possibleChar = [];
-  console.log(possibleChar);
+  
   //creat empty string to save values in
   var userPass = "";
   console.log(userPass);
 
   //ask the user what kind of characters they want in the password and then logs the response and add them to an array
-
-
   var numChar = prompt("How many characters would you like to use?");
   //console.log(numChar);
 
@@ -47,12 +44,21 @@ function generatePassword() {
   var useNumbers = confirm("Would you like numbers?");
   //console.log(useNumbers);
   if (useNumbers) {
-    possibleChar.push(numbers)
+    possibleChar.push(numbers);
   }
+  console.log(possibleChar);
 
 
+  //create loop that adds how many characters the user wanted in a string
+ for (var index = 0; index < numChar; index++) {
+  var getChar = possibleChar[Math.floor(Math.random() * possibleChar.length)];
+  var addToPass = getChar[Math.floor(Math.random() * getChar.length)];
+  userPass += addToPass;
+ }
+  
 
-  return "THIS IS THE PASSWORD"
+
+  return userPass
 }
 
 // Write password to the #password input
@@ -66,3 +72,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+//create global function that we can use to get a value from a string that we got from a random value in an array
+//clear array after password is made
