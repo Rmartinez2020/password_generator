@@ -24,7 +24,7 @@ function generatePassword() {
     var numChar = prompt("How many characters would you like to use?");
   }
   if (numChar < 8) {
-    alert("Please select more than 8 characters.");
+    alert("Please select at least 8 characters.");
     var numChar = prompt("How many characters would you like to use?");
   }
   //limit input to only numbers
@@ -58,6 +58,11 @@ function generatePassword() {
     var useNumbers = confirm("Would you like numbers?");
     if (useNumbers) {
       possibleChar.push(numbers);
+    }
+    //ends funtion if no type of characters are selected 
+    if(possibleChar.length == 0) {
+      alert("Choose at least 1 type of character.")
+      return;
     }
     //log to check which values are in array
     console.log(possibleChar);
